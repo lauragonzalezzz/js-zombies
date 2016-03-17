@@ -141,9 +141,31 @@ function Player(name, health, strength, speed) {
     console.log(_pack[2]);
   }
 
-  this.equip = function() {
-    
+  this.equip = function(itemToEquip) {
+    var index = _pack.indexOf(itemToEquip);
+    if (index !== -1 && itemToEquip instanceof Item) {
+      if (this.equipped === false) {
+        this.equipped = itemToEquip;
+        _pack.splice(index, 1);
+        return true;
+      }
+      else if (this.equipped !== false) {
+        var limbo = this.equipped;
+        this.equipped = itemToEquip;
+        _pack.splice(index, 1);
+        _pack.push(limbo);
+        return true;
+      }
+      else {
+        return false;
+      }
+      return true;
+    }
+    else {
+      return false;
+    }
   }
+
 
 }
 
