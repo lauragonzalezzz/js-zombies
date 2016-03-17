@@ -143,7 +143,7 @@ function Player(name, health, strength, speed) {
 
   this.equip = function(itemToEquip) {
     var index = _pack.indexOf(itemToEquip);
-    if (index !== -1 && itemToEquip instanceof Item) {
+    if (index !== -1 && itemToEquip instanceof Weapon) {
       if (this.equipped === false) {
         this.equipped = itemToEquip;
         _pack.splice(index, 1);
@@ -166,7 +166,23 @@ function Player(name, health, strength, speed) {
     }
   }
 
+  this.eat = function(itemToEat) {
+    var index = _pack.indexOf(itemToEat);
+    if (index !== -1 && itemToEat instanceof Food) {
+      _pack.splice(index, 1);
+      this.health += itemToEat.energy;
+    }
+    else {
+      return false;
+    }
+    if (this.health > this.getMaxHealth()) {
+      this.health = this.getMaxHealth();
+    }
+  }
 
+  this.useItem = function() {
+    
+  }
 }
 
 /**
