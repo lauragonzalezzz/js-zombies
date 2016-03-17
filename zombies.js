@@ -136,6 +136,14 @@ function Zombie(health, strength, speed) {
   var _maxHealth = health;
 }
 
+function FastZombie(health, strength, speed) {
+  Zombie.call(this, health, strength, speed);
+  this.health = health;
+  this.strength = strength;
+  this.speed = speed;
+}
+
+FastZombie.prototype = Object.create(Zombie.prototype);
 
 /**
  * Class => Zombie(health, strength, speed)
