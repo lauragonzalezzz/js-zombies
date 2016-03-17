@@ -190,7 +190,13 @@ function Player(name, health, strength, speed) {
   }
 
   this.equippedWith = function(){
-    
+    if (this.equipped === false) {
+      console.log('Nothing equipped.');
+      return false;
+    }
+    else {
+      return this.equipped.name;
+    }
   }
 }
 
