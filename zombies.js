@@ -113,7 +113,7 @@ function Player(name, health, strength, speed) {
   this.takeItem = function(item) {
     if (this.getPack().length < 3) {
       _pack.push(item);
-      console.log('Item taken successfully.');
+      console.log(this.name + ' , ' + item.name + ' taken successfully.');
       return true;
     }
     else {
@@ -123,6 +123,25 @@ function Player(name, health, strength, speed) {
   }
 
   this.discardItem = function(item) {
+    if (_pack.indexOf(item) === -1) {
+      console.log('Item not found.');
+      return false;
+    }
+    else {
+      var index = _pack.indexOf(item);
+      _pack.splice(index, 1);
+      console.log(this.name + ' , ' + item.name + ' discarded successfully.');
+      return true;
+    }
+  }
+
+  this.checkPack = function() {
+    console.log(_pack[0]);
+    console.log(_pack[1]);
+    console.log(_pack[2]);
+  }
+
+  this.equip = function() {
     
   }
 
