@@ -180,7 +180,16 @@ function Player(name, health, strength, speed) {
     }
   }
 
-  this.useItem = function() {
+  this.useItem = function(item) {
+    if (item instanceof Weapon) {
+      this.equip(item);
+    }
+    if (item instanceof Food) {
+      this.eat(item);
+    }
+  }
+
+  this.equippedWith = function(){
     
   }
 }
