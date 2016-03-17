@@ -93,12 +93,39 @@ Food.prototype = Object.create(Item.prototype);
  */
 
 function Player(name, health, strength, speed) {
+  var _pack = [];
+  var _maxHealth = health;
   this.name = name;
   this.health = health;
   this.strength = strength;
   this.speed = speed;
-  var _pack;
-  var _maxHealth;
+  this.isAlive = true;
+  this.equipped = false;
+  
+  this.getPack = function() {
+    return _pack;
+  }
+
+  this.getMaxHealth = function() {
+    return _maxHealth;
+  }
+
+  this.takeItem = function(item) {
+    if (this.getPack().length < 3) {
+      _pack.push(item);
+      console.log('Item taken successfully.');
+      return true;
+    }
+    else {
+      console.log('Your pack is too full, item not taken.');
+      return false;
+    }
+  }
+
+  this.discardItem = function(item) {
+    
+  }
+
 }
 
 /**
